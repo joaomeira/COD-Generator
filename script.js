@@ -171,6 +171,7 @@ function createKeyboard() {
         ["7","8","9","<<"],
         ["4","5","6","CLEAR"],
         ["1","2","3","-"],
+        ["*","0","#","."],
         ["C","N","T","ENTER"]
     ];
     keys.forEach(row => {
