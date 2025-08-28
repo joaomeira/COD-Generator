@@ -132,8 +132,15 @@ function generateCodes() {
 // ======================
 // CSV
 // ======================
+
+let csvPath = '../bunkers_code.csv'; // padrão PT
+
+if (currentLang == 'pt') {
+    csvPath = 'bunkers_code.csv';
+}
+
 function displayCodesTable() {
-    fetch('bunkers_code.csv')
+    fetch(csvPath)
         .then(resp => resp.ok ? resp.text() : Promise.reject())
         .then(csvData => {
             const lines = csvData.trim().split('\n');
