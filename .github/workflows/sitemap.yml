@@ -3,25 +3,31 @@ name: Generate Sitemap
 on:
   push:
     branches:
-      - main
-      - master  # ajuste se sua branch for master ou main
+      - main   # ajuste se sua branch principal for master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
 
+    steps:
+      # 1️⃣ Pegar o repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # necessário para push usando token
+
+      # 2️⃣ Instalar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      # 3️⃣ Instalar sitemap-generator-cli globalmente
       - name: Install sitemap generator
         run: npm install -g sitemap-generator-cli
 
-      - name: Generate sitemap
+      # 4️⃣ Gerar o sitemap
+      - name: Generate sitemap.xml
         run: |
           sitemap-generator https://joaomeira.github.io/COD-Generator/ \
             --max-depth 0 \
@@ -29,16 +35,11 @@ jobs:
             --last-mod \
             --strip-querystring
 
-      - name: Commit sitemap.xml
+      # 5️⃣ Commit e push do sitemap.xml
+      - name: Commit and push sitemap.xml
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add sitemap.xml
-          git commit -m "update sitemap.xml" || echo "No changes to commit"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git diff-index --quiet HEAD || git commit -m "Update sitemap.xml"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
