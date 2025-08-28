@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COD GENERATOR - PT</title>
+    <meta name="description" content="Gere códigos do Warzone Verdansk, missões, estadio, especialista com números. Versão em português.">
+    
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="pt" href="/">
+    <link rel="alternate" hreflang="en" href="/en/">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Botão de idioma -->
+        <a href="/en/" style="float:right; text-decoration:none;"><button>EN</button></a>
+
+        <h1>Warzone Verdansk Codes</h1>
+        <p>Insira um código com números e curingas (ex: 1xx3yy) para gerar combinações:</p>
+
+        <!-- Seleção de tamanho -->
+        <div id="codeLengthOptions">
+            <input type="radio" id="len6" name="codeLength" value="6" checked>
+            <label for="len6">6 dígitos</label>
+
+            <input type="radio" id="len8" name="codeLength" value="8">
+            <label for="len8">8 dígitos</label>
+
+            <input type="radio" id="len10" name="codeLength" value="10">
+            <label for="len10">10 dígitos</label>
+        </div>
+
+        <br>
+        <input type="text" id="codeInput" placeholder="Digite o código">
+        <button onclick="generateCodes()" id="generateBtn">Gerar Códigos</button>
+
+        <!-- Teclado virtual -->
+        <div id="keyboard"></div>
+        <br>
+        <div id="results"></div>
+        <br>
+        <h2>Códigos do Bunker</h2>
+        <div id="codesTable"></div>
+        <h2>Mapa interativo dos Bunkers</h2>
+        <p>Use Ctrl + Mouse Scroll para zoom. Pinça no celular.</p>
+        <div class="map-container">
+            <img id="verdanskMap" src="bunkers_map.png" alt="Mapa dos Bunkers">
+        </div>
+        <br>
+        <p>Inspirado por <a href="https://github.com/m-alnafisah" target="_blank">m-alnafisah</a>, totalmente reescrito e expandido por <a href="https://github.com/joaomeira" target="_blank">joaomeira</a>.</p>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
