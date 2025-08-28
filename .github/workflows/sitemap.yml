@@ -1,0 +1,38 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+      - master  # ajuste se sua branch for master ou main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install sitemap generator
+        run: npm install -g sitemap-generator-cli
+
+      - name: Generate sitemap
+        run: |
+          sitemap-generator https://joaomeira.github.io/COD-Generator/ \
+            --max-depth 0 \
+            --filepath sitemap.xml \
+            --last-mod \
+            --strip-querystring
+
+      - name: Commit sitemap.xml
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add sitemap.xml
+          git commit -m "update sitemap.xml" || echo "No changes to commit"
+          git push
