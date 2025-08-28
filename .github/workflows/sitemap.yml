@@ -1,45 +1,45 @@
-name: Generate Sitemap
+# name: Generate Sitemap
 
-on:
-  push:
-    branches:
-      - main   # ajuste se sua branch principal for master
+# on:
+#   push:
+#     branches:
+#       - main   # ajuste se sua branch principal for master
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      # 1️⃣ Pegar o repositório
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: true  # necessário para push usando token
+#     steps:
+#       # 1️⃣ Pegar o repositório
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#         with:
+#           persist-credentials: true  # necessário para push usando token
 
-      # 2️⃣ Instalar Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+#       # 2️⃣ Instalar Node.js
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 18
 
-      # 3️⃣ Instalar sitemap-generator-cli globalmente
-      - name: Install sitemap generator
-        run: npm install -g sitemap-generator-cli
+#       # 3️⃣ Instalar sitemap-generator-cli globalmente
+#       - name: Install sitemap generator
+#         run: npm install -g sitemap-generator-cli
 
-      # 4️⃣ Gerar o sitemap
-      - name: Generate sitemap.xml
-        run: |
-          sitemap-generator https://joaomeira.github.io/COD-Generator/ \
-            --max-depth 0 \
-            --filepath sitemap.xml \
-            --last-mod \
-            --strip-querystring
+#       # 4️⃣ Gerar o sitemap
+#       - name: Generate sitemap.xml
+#         run: |
+#           sitemap-generator https://joaomeira.github.io/COD-Generator/ \
+#             --max-depth 0 \
+#             --filepath sitemap.xml \
+#             --last-mod \
+#             --strip-querystring
 
-      # 5️⃣ Commit e push do sitemap.xml
-      - name: Commit and push sitemap.xml
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add sitemap.xml
-          git diff-index --quiet HEAD || git commit -m "Update sitemap.xml"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+#       # 5️⃣ Commit e push do sitemap.xml
+#       - name: Commit and push sitemap.xml
+#         run: |
+#           git config --local user.email "github-actions[bot]@users.noreply.github.com"
+#           git config --local user.name "github-actions[bot]"
+#           git add sitemap.xml
+#           git diff-index --quiet HEAD || git commit -m "Update sitemap.xml"
+#           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
