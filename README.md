@@ -8,7 +8,7 @@ This project is a code generator for Warzone Verdansk inspired by [m-alnafisah/v
 
 ## Português (PT)
 
-![Mapa Verdansk](https://www.facebook.com/TheBeanBoltShow/posts/full-verdansk-2025-keypadsbunker-codes-including-easter-egg-subway/1249029880345575/)
+[Mapa Verdansk](https://www.facebook.com/TheBeanBoltShow/posts/full-verdansk-2025-keypadsbunker-codes-including-easter-egg-subway/1249029880345575/)
 
 > Caso queira que a imagem seja retirada, entre em contato conosco.
 
@@ -39,7 +39,7 @@ Alterações ou uso do código devem ser feitas via **pull request** e com autor
 
 ## English (EN)
 
-![Verdansk Map](https://www.facebook.com/TheBeanBoltShow/posts/full-verdansk-2025-keypadsbunker-codes-including-easter-egg-subway/1249029880345575/)
+[Verdansk Map](https://www.facebook.com/TheBeanBoltShow/posts/full-verdansk-2025-keypadsbunker-codes-including-easter-egg-subway/1249029880345575/)
 
 > If you want the image removed, please contact us.
 
